@@ -31,7 +31,7 @@ RERANK_TOP_N     = 3
 CONFIDENCE_THRESHOLD = 0.3
 
 # ── Generation ───────────────────────────────────────────────
-GROQ_MODEL       = "llama3-70b-8192"
+GROQ_MODEL       = "llama-3.3-70b-versatile"
 MAX_TOKENS       = 1024
 TEMPERATURE      = 0.2
 
