@@ -1,4 +1,3 @@
-# src/indexing.py
 import json
 import os
 import pickle
