@@ -1,0 +1,12 @@
+langchain
+langchain-community
+langchain-text-splitters
+pymupdf
+rank-bm25
+sentence-transformers
+chromadb
+groq
+langchain-groq
+ragas
+gradio
+python-dotenv
