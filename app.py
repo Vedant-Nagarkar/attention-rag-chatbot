@@ -110,7 +110,7 @@ def build_ui():
         **Model:** `llama-3.3-70b-versatile` via Groq |
         **Embeddings:** `all-MiniLM-L6-v2` |
         **Reranker:** `ms-marco-MiniLM-L-6-v2` |
-        **RAGAS:** Faithfulness 0.625 | Context Precision 0.917 | Context Recall 1.0
+        **RAGAS:** Faithfulness 0.86 | Context Precision 0.87 | Context Recall 0.70
         """)
 
         submit_btn.click(

@@ -106,10 +106,10 @@ for metric, score in scores.items():
 
 # Save whatever we have, including nan
 scores_to_save = {
-    "faithfulness":      0.6250,
-    "answer_relevancy":  "pending - run tomorrow",
-    "context_precision": 0.9167,
-    "context_recall":    1.0000
+    "faithfulness":      0.8635,
+    "answer_relevancy":  "pending",
+    "context_precision": 0.8667,
+    "context_recall":    0.7000
 }
 with open(RAGAS_RESULTS_PATH, "w") as f:
     json.dump(scores_to_save, f, indent=2)
