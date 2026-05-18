@@ -1,21 +1,7 @@
----
-title: Attention RAG Chatbot
-emoji: 🤖
-colorFrom: blue
-colorTo: purple
-sdk: gradio
-sdk_version: "4.0"
-app_file: app.py
-pinned: false
----
 
 # 🤖 Attention Is All You Need — RAG Chatbot
 
 A production-grade Retrieval-Augmented Generation (RAG) chatbot built over the seminal Transformer paper ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762) by Vaswani et al. (2017).
-
-Built as Week 5 capstone of a structured ML Engineering roadmap.
-
-**Live Demo:** [HuggingFace Spaces](https://huggingface.co/spaces/Ved2001/attention-rag-chatbot)
 
 ---
 
