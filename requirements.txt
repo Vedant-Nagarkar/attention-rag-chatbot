@@ -10,3 +10,4 @@ langchain-groq
 ragas
 gradio
 python-dotenv
+pysqlite3-binary

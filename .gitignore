@@ -1,16 +1,7 @@
-# Data
-data/
-
 # Environment
 .env
 __pycache__/
 *.pyc
-
-# Model artifacts
-*.pkl
-*.pt
-*.bin
-models/chroma_store/
 
 # Logs
 logs/
