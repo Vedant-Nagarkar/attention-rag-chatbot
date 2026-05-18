@@ -21,23 +21,24 @@ Ask any question about the Transformer architecture and get a grounded, cited an
 ---
 
 ## Pipeline Architecture
-'''
 
+```
 PDF → Ingest → BM25 Index + ChromaDB Index
-↓
-Hybrid Search (BM25 + Semantic)
-↓
-RRF Fusion (k=60)
-↓
-Cross-Encoder Reranking (top-3)
-↓
-HyDE (for queries ≥ 4 words)
-↓
-Confidence Threshold Check
-↓
-Groq LLM Generation (LCEL)
-↓
-Cited Answer + Sources
+                      ↓
+              Hybrid Search (BM25 + Semantic)
+                      ↓
+              RRF Fusion (k=60)
+                      ↓
+         Cross-Encoder Reranking (top-3)
+                      ↓
+         HyDE (for queries ≥ 4 words)
+                      ↓
+         Confidence Threshold Check
+                      ↓
+         Groq LLM Generation (LCEL)
+                      ↓
+              Cited Answer + Sources
+```
 
 ---
 
@@ -71,8 +72,8 @@ Evaluated on a 10-question golden test set built from the paper.
 ---
 
 ## Project Structure
-'''
 
+```
 attention-rag-chatbot/
 ├── src/
 │   ├── logger.py        # centralized logging
@@ -92,6 +93,7 @@ attention-rag-chatbot/
 ├── config.py            # all constants and paths
 ├── requirements.txt
 └── .env.example
+```
 
 ---
 
