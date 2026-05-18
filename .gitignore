@@ -1,18 +1,15 @@
-# Environment
+cat > .gitignore << 'EOF'
 .env
 __pycache__/
 *.pyc
-
-# Logs
+*.pkl
+*.bin
+*.sqlite3
+data/
 logs/
-
-# Jupyter
 .ipynb_checkpoints/
-
-# VS Code
 .vscode/
-
-# Conda
 *.egg-info/
 dist/
 build/
+EOF
