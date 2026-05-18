@@ -21,6 +21,7 @@ Ask any question about the Transformer architecture and get a grounded, cited an
 ---
 
 ## Pipeline Architecture
+'''
 
 PDF → Ingest → BM25 Index + ChromaDB Index
 ↓
@@ -70,6 +71,7 @@ Evaluated on a 10-question golden test set built from the paper.
 ---
 
 ## Project Structure
+'''
 
 attention-rag-chatbot/
 ├── src/
