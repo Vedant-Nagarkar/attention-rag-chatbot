@@ -1,4 +1,3 @@
-
 # 🤖 Attention Is All You Need — RAG Chatbot
 
 A production-grade Retrieval-Augmented Generation (RAG) chatbot built over the seminal Transformer paper ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762) by Vaswani et al. (2017).
@@ -51,7 +50,8 @@ PDF → Ingest → BM25 Index + ChromaDB Index
 | Orchestration | LangChain LCEL |
 | Evaluation | RAGAS 0.4.3 |
 | UI | Gradio |
-| Deployment | HuggingFace Spaces |
+| API | FastAPI + Uvicorn |
+| Containerization | Docker |
 
 ---
 
@@ -83,12 +83,15 @@ attention-rag-chatbot/
 ├── data/
 │   ├── raw/             # source PDF
 │   └── processed/       # chunked text (JSON)
-├── models/              # BM25 index + ChromaDB store
+├── models/              # BM25 index + ChromaDB store (tracked via Git LFS)
 ├── logs/                # app.log + query_log.json
 ├── app.py               # Gradio UI
+├── main.py              # FastAPI REST API (POST /query, GET /health)
 ├── run_eval.py          # RAGAS evaluation runner
 ├── config.py            # all constants and paths
 ├── requirements.txt
+├── Dockerfile
+├── .dockerignore
 └── .env.example
 ```
 
@@ -143,6 +146,46 @@ Open `http://localhost:7860`
 ```bash
 python run_eval.py
 ```
+
+---
+
+## REST API (FastAPI)
+
+The RAG pipeline is also exposed as a REST API, independent of the Gradio UI.
+
+**Run locally:**
+```bash
+uvicorn main:app --host 0.0.0.0 --port 7860
+```
+
+**Endpoints:**
+| Method | Path | Description |
+|---|---|---|
+| GET | `/health` | Liveness check |
+| POST | `/query` | Ask a question — body: `{"question": "..."}` |
+
+**Example:**
+```bash
+curl -X POST http://localhost:7860/query \
+  -H "Content-Type: application/json" \
+  -d '{"question": "What is multi-head attention?"}'
+```
+
+Interactive docs available at `http://localhost:7860/docs` once running.
+
+---
+
+## Docker
+
+**Build and run locally:**
+```bash
+docker build -t attention-rag-api .
+docker run -p 7860:7860 --env-file .env attention-rag-api
+```
+
+Verified working end-to-end locally — full retrieval + generation pipeline returns grounded answers with citations inside the container, matching non-containerized output exactly.
+
+**Deployment note:** the full model stack (sentence-transformer embeddings + cross-encoder reranker + BM25 + ChromaDB, all loaded in memory at startup) exceeds the RAM ceiling of standard free-tier hosting (e.g., Render's free 512MB instance OOMs on startup; HuggingFace Spaces now requires a paid plan to create Docker Spaces). Confirmed working in a local Docker container; public deployment requires either a paid tier with more RAM or further memory optimization (e.g. lazy-loading the reranker, swapping to a smaller embedding model).
 
 ---
 
