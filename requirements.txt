@@ -11,3 +11,5 @@ ragas
 gradio
 python-dotenv
 pysqlite3-binary
+fastapi
+uvicorn[standard]
